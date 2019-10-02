@@ -41,6 +41,51 @@ class TeamNameMinimaxAgent(Agent):
 
         player = self.game.player(state)
         ### START CODE HERE ###
+        self.scoreList = []
+        self.minMax(state, 2, -1000, 1000)
+        a = self.scoreList.index(max(self.scoreList))
+        self.action = legal_actions[a]
+
+
+    def minMax(self, state, depth, alpha, beta):
+        if depth == 0:
+            return self.heuristic(state)
+        
+        if self.game.player(state) == 1:
+            for i in self.game.actions(state):
+                score = self.minMax(self.game.succ(state, i), depth-1, alpha, beta)
+                if depth == 2:
+                    self.scoreList.append(score)
+                if score > alpha:
+                    alpha = score
+                    if alpha >= beta:
+                        return beta
+            return alpha
+        else:
+            for i in self.game.actions(state):
+                score = self.minMax(self.game.succ(state, i), depth-1, alpha, beta)
+                if score <beta:
+                    beta = score
+                    if alpha >= beta:
+                        return alpha
+            return beta
+
+    def heuristic(self, state):
+        total = 0
+        if total ==0:
+            print(state)
+            total+=1
+            '''
+        for i in state[1].board_status:
+            #total += state[1].board_status[i][0]
+            print("------------------------")
+            print(i)
+            print("-------------------------")
+            print("                  ")'''
+        return 1
+
+
+
 
 
 

@@ -63,7 +63,7 @@ def simulateMultipleGames(agents_dict, simulation_times, ccgame):
 def callback(ccgame):
     B.destroy()
     simpleGreedyAgent = SimpleGreedyAgent(ccgame)
-    simpleGreedyAgent1 = SimpleGreedyAgent(ccgame)
+    simpleGreedyAgent1 = TeamNameMinimaxAgent(ccgame)
     randomAgent = RandomAgent(ccgame)
     teamAgent = TeamNameMinimaxAgent(ccgame)
     simulateMultipleGames({1: simpleGreedyAgent1, 2: simpleGreedyAgent}, 1, ccgame)
