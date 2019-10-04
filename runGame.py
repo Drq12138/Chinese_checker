@@ -66,12 +66,12 @@ def callback(ccgame):
     simpleGreedyAgent1 = TeamNameMinimaxAgent(ccgame)
     randomAgent = RandomAgent(ccgame)
     teamAgent = TeamNameMinimaxAgent(ccgame)
-    simulateMultipleGames({1: simpleGreedyAgent1, 2: simpleGreedyAgent}, 1, ccgame)
+    simulateMultipleGames({1: simpleGreedyAgent1, 2: simpleGreedyAgent}, 30, ccgame)
    
 
 
 if __name__ == '__main__':
-    ccgame = ChineseChecker(6, 2)
+    ccgame = ChineseChecker(10, 4)
     root = tk.Tk()
     board = GameBoard(root,ccgame.size,ccgame.size * 2 - 1,ccgame.board)
     board.pack(side="top", fill="both", expand="true", padx=4, pady=4)

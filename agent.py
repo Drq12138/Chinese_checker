@@ -72,17 +72,21 @@ class TeamNameMinimaxAgent(Agent):
 
     def heuristic(self, state):
         total = 0
-        if total ==0:
-            print(state)
-            total+=1
-            '''
-        for i in state[1].board_status:
-            #total += state[1].board_status[i][0]
-            print("------------------------")
-            print(i)
-            print("-------------------------")
-            print("                  ")'''
-        return 1
+        
+        for i in state[1].board_status.keys():
+            if state[1].board_status[i] == 1:
+                total += 20-i[0]
+                if abs(i[1]-(min(20-i[0], i[0])+1)/2)<2:
+                    total+=1
+                else:
+                    total-=2
+                if i[0]<5:
+                    total+=3
+            elif state[1].board_status[i] == 2:
+                total+=20-i[0]
+                if i[0]<5:
+                    total-=1
+        return total
 
 
 
